@@ -17,7 +17,7 @@
         <ListBox Name = "ListAnimals"  HorizontalAlignment="Left" Height="300" Margin="402,41,0,0" VerticalAlignment="Top" Width="150" />
 
         <Button Content="Delete Zoo" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Height="25" Width="150" Click="DeleteZoo_Click"/>
-        <Button Content="Remove Animal" HorizontalAlignment="Left" Margin="202,221,0,0" VerticalAlignment="Top" Height="25" Width="150"/>
+        <Button Click="RemoveAnimalFromZoo_Click" Content="Remove Animal" HorizontalAlignment="Left" Margin="202,221,0,0" VerticalAlignment="Top" Height="25" Width="150"/>
         <Button Click="AddZoo_Click" Content="Add Zoo" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" Height="25" Width="150"/>
         <Button Click="AddAnimals_Click" Content="Add Animal" HorizontalAlignment="Left" Margin="202,320,0,0" VerticalAlignment="Top" Height="25" Width="150"/>
         <Button Click="DeleteAnimal_Click" Content="Delete Animal" HorizontalAlignment="Left" Margin="402,351,0,0" VerticalAlignment="Top" Height="25" Width="150"/>
