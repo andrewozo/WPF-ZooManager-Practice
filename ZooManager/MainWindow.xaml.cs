@@ -132,8 +132,11 @@ namespace ZooManager
 
         private void listZoos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowAssociatedAnimals();
-            ShowSelectedZooInTextBox();
+            if (ListZoos.SelectedValue != null)
+            {
+                ShowAssociatedAnimals();
+                ShowSelectedZooInTextBox();
+            }
         }
 
         private void DeleteZoo_Click(object sender, RoutedEventArgs e)
@@ -341,7 +344,7 @@ namespace ZooManager
         {
             try
             {
-                string query = "update Zoo set Location = @Location where Id = @ZooId";
+                string query = "update Zoo Set Location = @Location where Id = @ZooId";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();
                 sqlCommand.Parameters.AddWithValue("@ZooId", ListZoos.SelectedValue);
@@ -361,9 +364,38 @@ namespace ZooManager
             }
         }
 
+        private void UpdateAnimals_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "update Animal Set Name = @Name where Id = @AnimalId";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+
+                sqlCommand.Parameters.AddWithValue("@AnimalId", ListAnimals.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@Name", MyTextBox.Text);
+                sqlCommand.ExecuteScalar();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowAnimals();
+
+            }
+        }
+
         private void ListAnimals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowSelectedAnimalInTextBox();
+            if (ListAnimals.SelectedValue != null)
+            {
+                ShowSelectedAnimalInTextBox();
+            }
         }
     }
 }
