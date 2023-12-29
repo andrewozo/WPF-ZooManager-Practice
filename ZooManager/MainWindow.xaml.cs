@@ -241,7 +241,11 @@ namespace ZooManager
         {
             try
             {
-
+                string query = "delete from Animal where id = @AnimalId";
+                SqlCommand sqlCommand = new SqlCommand(query,sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@AnimalId", ListAnimals.SelectedValue);
+                sqlCommand.ExecuteScalar();
             }
             catch (Exception ex)
             {
@@ -249,6 +253,8 @@ namespace ZooManager
             }
             finally
             {
+                sqlConnection.Close();
+                ShowAnimals();
 
             }
         }
